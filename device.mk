@@ -14,13 +14,16 @@
 # limitations under the License.
 #
 
-LOCAL_PATH := device/realme/nicky
+LOCAL_PATH := device/realme/RMX1971
 
 # Inherit from common AOSP config
 $(call inherit-product, $(SRC_TARGET_DIR)/product/base.mk)
 
 # Launched with pie
 $(call inherit-product, build/make/target/product/product_launched_with_p.mk)
+
+# Enable project quotas and casefolding for emulated storage
+$(call inherit-product, $(SRC_TARGET_DIR)/product/emulated_storage.mk)
 
 # Build from source
 TARGET_RECOVERY_DEVICE_MODULES += \

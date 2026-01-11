@@ -15,7 +15,7 @@
 #
 
 # Release name
-PRODUCT_RELEASE_NAME := nicky
+PRODUCT_RELEASE_NAME := RMX1971
 
 # Inherit from those products. Most specific first.
 $(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
@@ -26,11 +26,11 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/base.mk)
 # Inherit from our custom product configuration
 $(call inherit-product, vendor/twrp/config/common.mk)
 
-$(call inherit-product, device/realme/nicky/device.mk)
+$(call inherit-product, device/realme/RMX1971/device.mk)
 
 ## Device identifier. This must come after all inclusions
-PRODUCT_DEVICE := nicky
-PRODUCT_NAME := omni_nicky
+PRODUCT_DEVICE := RMX1971
+PRODUCT_NAME := twrp_RMX1971
 PRODUCT_BRAND := Realme
-PRODUCT_MODEL := RMX1921
+PRODUCT_MODEL := RMX1971
 PRODUCT_MANUFACTURER := Realme

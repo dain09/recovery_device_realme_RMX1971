@@ -1,16 +1,42 @@
-# Dont install AROMAFM
-export FOX_DELETE_AROMAFM=1
-export FOX_DISABLE_APP_MANAGER=1
+# General Information
+export OF_MAINTAINER="Abdallah"
+export FOX_MAINTAINER_PATCH_VERSION="3"
+export FOX_BUILD_TYPE="Stable"
+export TARGET_ARCH="arm64"
 
-# Status Bar
-export OF_CLOCK_POS=0
+# Screen & Notch Settings
+export OF_SCREEN_H=2340
+export OF_STATUS_H=80
+export OF_CLOCK_POS=1
 export OF_STATUS_INDENT_LEFT=48
 export OF_STATUS_INDENT_RIGHT=48
-export OF_SCREEN_H=2340
-export OF_STATUS_H=100
+export OF_HIDE_NOTCH=1
 
-# Ozip decryption
+# Realme Specifics & Decryption
 export OF_SUPPORT_OZIP_DECRYPTION=1
+export OF_FIX_DECRYPTION_ON_DATA_MEDIA=1
+export OF_SKIP_FBE_DECRYPTION=0
 
-# Battery
+# Tools & Binaries
+export FOX_USE_BASH_SHELL=1
+export FOX_ASH_IS_BASH=1
+export FOX_USE_NANO_EDITOR=1
+export FOX_USE_TAR_BINARY=1
+export FOX_USE_SED_BINARY=1
+export FOX_USE_XZ_UTILS=1
+export FOX_USE_LZ4_BINARY=1
+
+# Functions & Features
+export OF_FLASHLIGHT_ENABLE=1
 export OF_USE_LEGACY_BATTERY_SERVICES=1
+export OF_DISABLE_MIUI_SPECIFIC_FEATURES=1
+export OF_NO_TREBLE_COMPATIBILITY_CHECK=1
+
+# Build System
+export OF_USE_MAGISKBOOT=1
+export OF_USE_MAGISKBOOT_FOR_ALL_PATCHES=1
+export OF_USE_LZ4_COMPRESSION=1
+
+# Cleanup
+export FOX_DELETE_AROMAFM=1
+export FOX_DISABLE_APP_MANAGER=1
