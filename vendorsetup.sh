@@ -1,6 +1,6 @@
 # General Information
 export OF_MAINTAINER="Abdallah"
-export FOX_MAINTAINER_PATCH_VERSION="3"
+export FOX_MAINTAINER_PATCH_VERSION="4"
 export FOX_BUILD_TYPE="Stable"
 export TARGET_ARCH="arm64"
 
