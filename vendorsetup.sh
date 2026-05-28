@@ -3,6 +3,7 @@ export OF_MAINTAINER="Abdallah"
 export FOX_MAINTAINER_PATCH_VERSION="4"
 export FOX_BUILD_TYPE="Stable"
 export TARGET_ARCH="arm64"
+export OF_MAINTAINER_AVATAR="$(dirname ${BASH_SOURCE[0]})/maintainer.png"
 
 # Screen & Notch Settings
 export OF_SCREEN_H=2340
