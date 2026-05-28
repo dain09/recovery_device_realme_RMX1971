@@ -108,11 +108,8 @@ TARGET_NO_RECOVERY := false
 BOARD_RAMDISK_USE_LZ4 := true
 TARGET_USES_MKE2FS := true
 
-# Crypto
+# Crypto (Android.mk forces FBE + metadata_decrypt when TW_INCLUDE_CRYPTO is set)
 TW_INCLUDE_CRYPTO := true
-TW_INCLUDE_CRYPTO_FBE := true
-TW_INCLUDE_FBE := true
-TW_INCLUDE_FBE_METADATA_DECRYPT := true
 TW_USE_FSCRYPT_POLICY := 1
 BOARD_USES_QCOM_FBE_DECRYPTION := true
 
@@ -145,6 +142,39 @@ TW_NO_EXFAT_FUSE := true
 TW_SKIP_COMPATIBILITY_CHECK := true
 TW_OZIP_DECRYPT_KEY :=  1c4c1ea3a12531ae491b21bb31613c11
 TW_QCOM_ATS_OFFSET := 1621580431500
+
+# ── Recommended flags (from Android.mk audit) ──────────────────────────
+
+# HIGH: Pass BOARD_BOOT_HEADER_VERSION so -DBOARD_BOOT_HEADER_VERSION=1
+# reaches CFLAGS; affects boot image header parsing in recovery.
+BOARD_BOOT_HEADER_VERSION := 1
+
+# HIGH: Issue BLKDISCARD on wipe/format. UFS 2.1 on sdm710 benefits from
+# explicit trim — improves flash longevity and subsequent write speed.
+TW_ENABLE_BLKDISCARD := true
+
+# HIGH: Exclude APEX container handling from recovery build. APEX has no
+# function in recovery; this eliminates 30+ "no matching fstab entry for
+# loop" log lines and shrinks the binary.
+TW_EXCLUDE_APEX := true
+
+# MEDIUM: Skip redundant /system bind mount on SAR devices. System is
+# already mounted at /system_root; bind to /system adds no value.
+TW_NO_BIND_SYSTEM := true
+
+# MEDIUM: Skip parsing stock /vendor/etc/fstab.qcom as additional fstab.
+# Prevents vendor fs_mgr flags like "latemount" from bleeding into TWRP's
+# partition table and producing "Unhandled flag" warnings.
+TW_SKIP_ADDITIONAL_FSTAB := true
+
+# MEDIUM: Enable fastbootd inside recovery. Allows "adb reboot fastboot"
+# to enter fastbootd for flashing system/vendor images via fastboot.
+TW_INCLUDE_FASTBOOTD := true
+
+# LOW: Explicitly declare SAR — gates -DBOARD_BUILD_SYSTEM_ROOT_IMAGE in
+# the Android.mk. Already implicit via OrangeFox config but should be
+# explicit in the device tree.
+BOARD_BUILD_SYSTEM_ROOT_IMAGE := true
 
 # TWRP Debug Flags
 TARGET_USES_LOGD := true
